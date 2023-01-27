@@ -225,10 +225,10 @@ while True:
         
 
         # affichage à la mort
-        if vie == 0:
-            screen.fill(black)
-            gameover_text = font.render("GAME OVER", 1, (255, 255, 255))
-            screen.blit(gameover_text, (500, 400))
+    if vie == 0:
+        screen.fill(black)
+        gameover_text = font.render("GAME OVER", 1, (255, 255, 255))
+        screen.blit(gameover_text, (500, 400))
 
 
     pg.display.update()
