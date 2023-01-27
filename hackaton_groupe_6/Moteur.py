@@ -52,17 +52,17 @@ class John_Lennon(Character):
                 action = None
                 while action == None:
                     clock.tick(c)
-                        for event in pg.event.get():
+                    for event in pg.event.get():
 
-                            if event.type == pg.KEYDOWN:
-                                if event.key == pg.K_a:
-                                    action = "attack"
-                                if event.key == pg.K_m:
-                                    action = "magic"
-                            if event.type == pg.QUIT:
-                                global jeu
-                                jeu = False
-                                break
+                        if event.type == pg.KEYDOWN:
+                            if event.key == pg.K_a:
+                                action = "attack"
+                            if event.key == pg.K_m:
+                                action = "magic"
+                        if event.type == pg.QUIT:
+                            global jeu
+                            jeu = False
+                            break
 
                 
                 if action == "attack":
