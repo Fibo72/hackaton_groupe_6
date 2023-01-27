@@ -8,9 +8,9 @@ import pygame as pg
 # on initialise pygame et on crée une fenêtre de 400x300 pixels
 pg.init()
 jeu = True
-white = (255,255,255)
+black = (0,0,0)
 screen = pg.display.set_mode((400, 300))
-screen.fill(white)
+screen.fill(black)
 snake = [
     (10, 15),
     (11, 15),
@@ -64,8 +64,8 @@ while jeu:
             elif event.key == 105: #i
                 direction0 = 'u'
     
-    #le damier
-    screen.fill(white)
+    #le niveau 
+    screen.fill(black)
     for i in range(40):
         for j in range(30):
             if (i + j) % 2 == 0:
