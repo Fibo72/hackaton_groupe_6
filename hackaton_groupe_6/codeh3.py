@@ -27,7 +27,21 @@ c = 3
 # Objet de gestion du temps
 clock = pg.time.Clock()
 
+#Importation images
+albanlafont = pg.image.load("albanlafont2.png")
+johnlennon = pg.image.load("johnlennon.png")
+mur = pg.image.load("hippievert.png")
+balkanyface = pg.image.load("patrick-balkany.png")
+balkanydance1 = pg.image.load("patrickv2.png")
+balkanydance2 = pg.image.load("patrickv3.png")
 
+#mise à l'échelle images
+albanlafont = pg.transform.scale(albanlafont, (10, 10))
+johnlennon = pg.transform.scale(johnlennon, (10, 10))
+mur = pg.transform.scale(mur, (10, 10))
+balkanydance2 = pg.transform.scale(balkanydance2, (10, 10))
+balkanydance1 = pg.transform.scale(balkanydance1, (10, 10))
+balkanyface = pg.transform.scale(balkanyface, (10, 10))
 
 while jeu:
     clock.tick(c)
@@ -106,6 +120,15 @@ while jeu:
         jeu = False
     if direction0 == 'd' and direction1 == 'u':
         jeu = False
+
+    # Dessiner l'image du personnage à l'écran
+    screen.blit(albanlafont, (100, 100))
+    screen.blit(johnlennon, (300, 300))
+    screen.blit(mur, (400, 100))
+    screen.blit(balkanyface, (50, 50))
+    screen.blit(balkanydance1, (50, 100))
+    screen.blit(balkanydance2, (60, 80))
+
 
     pg.display.update()
 print('Game Over, score =',count)
