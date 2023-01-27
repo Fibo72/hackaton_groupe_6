@@ -43,6 +43,7 @@ etat_balkany = 1
 
 refreshrate = 5
 
+cnt_lvl = 0
 
 while True:
 
@@ -123,6 +124,7 @@ while True:
             etat_balkany = 1
         
         #le niveau
+    
     nrom = 2*cnt_lvl + 2
     Ldoor = []
 
@@ -200,7 +202,7 @@ while True:
                 screen[case] = 3
     print(screen)
 
-
+    
         
 
         # affichage à la mort
@@ -208,6 +210,6 @@ while True:
         #screen.blit(gameover_text, (500, 400))
 
 
-        pg.display.update()
+    pg.display.update()
 
     pg.quit()
