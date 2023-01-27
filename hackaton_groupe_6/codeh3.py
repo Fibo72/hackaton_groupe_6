@@ -21,7 +21,7 @@ direction = ['r', 'l', 'u', 'd']
 direction0 = 'r'
 direction1 = 'r'
 count = 0
-fruit = (randint(0,39), randint(0,29))
+fruit = (randint(0,39), randint(0,29)), 
 c = 3
 
 # Objet de gestion du temps
