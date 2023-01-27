@@ -45,11 +45,14 @@ refreshrate = 5
 
 
 while True:
-
+    
+    # pg.init()
+    # black = (0,0,0)
+    # screen = pg.display.set_mode((1000, 800))
+    # pg.display.set_caption('Donjon Lennon')
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
-            quit()
 
     # Dessiner chaque lettre du message
     largeur = 30
@@ -73,14 +76,21 @@ while True:
     pg.time.wait(5000) #avant de commencer le menu
 
     #menu
-    screen.fill((0, 0, 0))
-    play_button = pg.draw.rect(screen, (0, 255, 0), (150, 250, 100, 50))
-    quit_button = pg.draw.rect(screen, (255, 0, 0), (350, 250, 100, 50))
-    play_text = font.render("Jouer", True, (0, 0, 0))
-    quit_text = font.render("Quitter", True, (0, 0, 0))
-    screen.blit(play_text, (175, 265))
-    screen.blit(quit_text, (380, 265))
+    
+    # screen.fill(black)
+    # play_button = pg.draw.rect(screen, (0, 255, 0), (150, 250, 100, 50))
+    # quit_button = pg.draw.rect(screen, (255, 0, 0), (350, 250, 100, 50))
+    # play_text = font.render("Jouer", True, (0, 0, 0))
+    # quit_text = font.render("Quitter", True, (0, 0, 0))
+    # screen.blit(play_text, (175, 265))
+    # screen.blit(quit_text, (380, 265))
 
+    #events
+    # for event in pg.event.get():
+    #     if event.type == pg.QUIT:
+    #         pg.quit()
+    #     elif event.type == pg.MOUSEBUTTONDOWN:
+    #         if play_button.collidepoint(event.pos):
     while jeu:
         clock.tick(refreshrate)
 
@@ -144,5 +154,10 @@ while True:
 
 
         pg.display.update()
+
+            # elif quit_button.collidepoint(event.pos):
+            #     pg.quit()
+
+    
 
     pg.quit()
