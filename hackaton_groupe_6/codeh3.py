@@ -43,6 +43,7 @@ etat_balkany = 1
 
 refreshrate = 5
 
+cnt_lvl = 0
 
 while True:
     
@@ -141,9 +142,86 @@ while True:
             screen.blit(balkanydance2, (100, 100))
             etat_balkany = 1
         
-                
+        #le niveau
+    
+    nrom = 2*cnt_lvl + 2
+    Ldoor = []
 
+    def createrom(): #fonction qui crée les délimitations des salles
+        Lrom = []
+        Lmur = []
+        count = nrom
+        while count > len(Lmur):
+            i, j = randint(20,280), randint(20,280)
+            Lrom.append((i,j))
+            lar = randint(2,4)
+            lon = randint(5,10)
+            
+            rom = [(i + h,j + lon) for h in range(lar+1)] + [(i - h,j + lon) for h in range(1,lar+1)]
+            rom += ([(i + h,j - lon) for h in range(lar+1)] + [(i - h,j - lon) for h in range(1,lar+1)])
+            rom += ([(i + lar,j + h) for h in range(lon+1)] + [(i - lar,j + h) for h in range(1,lon+1)])
+            rom += ([(i + lar,j - h) for h in range(lon+1)] + [(i - lar,j - h) for h in range(1,lon+1)])
 
+            for mur in rom:
+                if mur in Lmur:
+                    Lrom.pop()
+                else:
+                    Lmur.append(rom)
+                    break
+        return Lmur
+
+    Lmur = createrom()
+
+    for rom in range(len(Lmur)): #création des murs et des portes
+
+        for mur in Lmur[rom]:
+            screen[mur] = 1
+        
+        door1 = randint(0,len(Lmur[rom])-1)
+        screen[Lmur[rom][door1]] = 2
+        door2 = randint(0,len(Lmur[rom])-1)
+
+        while door2 == door1:
+            door2 = randint(0,len(Lmur[rom])-1)
+        
+        screen[Lmur[rom][door2]] = 2
+        a = Lmur[rom][door1]
+        b = Lmur[rom][door2]
+        Ldoor.append([a, b])
+
+    def createpath(dep, arr): #crée un chemin entre 2 points en renvoyant une liste de points qui le compose sans passer à l'intérieur des salles
+        Lpath = [dep]
+        Lpathx = []
+        Lpathy = []
+        x, y = dep
+        a, b = arr
+        
+        if x < a:
+            Lpathx = [(x+i,y) for i in range(1,a-x)]
+        elif x>a:
+            Lpathx = [(x-i,y) for i in range(1,x-a)]
+        if y < b:
+            Lpathy = [(x,y+i) for i in range(1,b-y)]
+        elif x>a:
+            Lpathy = [(x,y-i) for i in range(1,y-b)]
+        Lpath = Lpath + Lpathx + Lpathy
+        return Lpath
+
+    for rom in range(nrom):
+        if rom < (nrom - 1):
+            path = createpath(Ldoor[rom][0],Ldoor[rom + 1][1])
+        else:
+            path = createpath(Ldoor[rom][0],Ldoor[0][1])
+        
+        for case in path:
+            if screen[case] == 1:
+                screen[case] = 2
+
+            elif screen[case] == 0:
+                screen[case] = 3
+    print(screen)
+
+    
         
 
         # affichage à la mort
@@ -153,7 +231,7 @@ while True:
             screen.blit(gameover_text, (500, 400))
 
 
-        pg.display.update()
+    pg.display.update()
 
             # elif quit_button.collidepoint(event.pos):
             #     pg.quit()
