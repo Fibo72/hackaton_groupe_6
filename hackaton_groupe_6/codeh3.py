@@ -29,12 +29,12 @@ balkanydance1 = pg.image.load("patrickv2.png")
 balkanydance2 = pg.image.load("patrickv3.png")
 
 #mise à l'échelle images
-albanlafont = pg.transform.scale(albanlafont, (10, 10))
-johnlennon = pg.transform.scale(johnlennon, (10, 10))
-mur = pg.transform.scale(mur, (10, 10))
-balkanydance2 = pg.transform.scale(balkanydance2, (10, 10))
-balkanydance1 = pg.transform.scale(balkanydance1, (10, 10))
-balkanyface = pg.transform.scale(balkanyface, (10, 10))
+albanlafont = pg.transform.scale(albanlafont, (50, 50))
+johnlennon = pg.transform.scale(johnlennon, (50, 50))
+mur = pg.transform.scale(mur, (50, 50))
+balkanydance2 = pg.transform.scale(balkanydance2, (50, 50))
+balkanydance1 = pg.transform.scale(balkanydance1, (50, 50))
+balkanyface = pg.transform.scale(balkanyface, (50, 50))
 
 # police  
 font = pg.font.Font('vinque rg.otf', 30)
@@ -46,11 +46,14 @@ refreshrate = 5
 cnt_lvl = 0
 
 while True:
-
+    
+    # pg.init()
+    # black = (0,0,0)
+    # screen = pg.display.set_mode((1000, 800))
+    # pg.display.set_caption('Donjon Lennon')
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
-            quit()
 
     # Dessiner chaque lettre du message
     largeur = 30
@@ -73,6 +76,22 @@ while True:
         #pg.time.wait(100)  # Attendre 100ms avant d'afficher la prochaine lettre
     pg.time.wait(5000) #avant de commencer le menu
 
+    #menu
+    
+    # screen.fill(black)
+    # play_button = pg.draw.rect(screen, (0, 255, 0), (150, 250, 100, 50))
+    # quit_button = pg.draw.rect(screen, (255, 0, 0), (350, 250, 100, 50))
+    # play_text = font.render("Jouer", True, (0, 0, 0))
+    # quit_text = font.render("Quitter", True, (0, 0, 0))
+    # screen.blit(play_text, (175, 265))
+    # screen.blit(quit_text, (380, 265))
+
+    #events
+    # for event in pg.event.get():
+    #     if event.type == pg.QUIT:
+    #         pg.quit()
+    #     elif event.type == pg.MOUSEBUTTONDOWN:
+    #         if play_button.collidepoint(event.pos):
     while jeu:
         clock.tick(refreshrate)
 
@@ -206,10 +225,17 @@ while True:
         
 
         # affichage à la mort
-        #gameover_text = font.render("GAME OVER", 1, (255, 255, 255))
-        #screen.blit(gameover_text, (500, 400))
+        if vie == 0:
+            screen.fill(black)
+            gameover_text = font.render("GAME OVER", 1, (255, 255, 255))
+            screen.blit(gameover_text, (500, 400))
 
 
     pg.display.update()
+
+            # elif quit_button.collidepoint(event.pos):
+            #     pg.quit()
+
+    
 
     pg.quit()
