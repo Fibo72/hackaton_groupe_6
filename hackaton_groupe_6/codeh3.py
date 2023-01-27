@@ -10,7 +10,7 @@ from pyganim import PygAnimation
 pg.init()
 jeu = True
 black = (0,0,0)
-screen = pg.display.set_mode((1000, 800))
+screen = pg.display.set_mode((1000, 700))
 pg.display.set_caption('Donjon Lennon')
 screen.fill(black)
 
